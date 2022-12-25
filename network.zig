@@ -1284,7 +1284,6 @@ const windows = struct {
     fn close(sock: ws2_32.SOCKET) void {
         if (ws2_32.closesocket(sock) != 0) {
             switch (ws2_32.WSAGetLastError()) {
-                .WSAENOTSOCK => unreachable,
                 .WSAEINPROGRESS => unreachable,
                 else => return,
             }
