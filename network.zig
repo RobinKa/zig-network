@@ -1443,6 +1443,7 @@ const windows = struct {
                     .WSAEOPNOTSUPP => unreachable,
                     .WSAETIMEDOUT, .WSAEWOULDBLOCK => error.WouldBlock,
                     .WSAEINTR => continue,
+                    .WSAECONNRESET => error.ConnectionResetByPeer,
                     else => |err| return unexpectedWSAError(err),
                 };
             }
